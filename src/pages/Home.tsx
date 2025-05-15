@@ -148,9 +148,9 @@ const Home: React.FC = () => {
       <footer className="bg-blue-900 text-white py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-xl font-bold mb-2">EduForms</h2>
+            <h2 className="text-xl font-bold mb-2">AskAcademy</h2>
             <p className="text-blue-200 text-sm">
-              © {new Date().getFullYear()} EduForms. Todos los derechos reservados.
+              © {new Date().getFullYear()} AskAcademy. Todos los derechos reservados.
             </p>
           </div>
         </div>
