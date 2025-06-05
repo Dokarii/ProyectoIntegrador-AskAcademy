@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <ProtectedRoute requiredRole="teacher" />,
         children: [
           {
-            path: 'dashboard',
+            path: '',
             element: <TeacherDashboard />
           }
         ]
@@ -103,7 +103,6 @@ const router = createBrowserRouter([
 ]);
 
 const AppRouter: React.FC = () => {
-  // Make auth context available to the router for redirects
   window.__CONTEXT = {
     get auth() {
       return document.getElementById('root')?.__REACT_CONTEXT?.auth;
@@ -119,7 +118,6 @@ const AppRouter: React.FC = () => {
 
 export default AppRouter;
 
-// Extend Window interface
 declare global {
   interface Window {
     __CONTEXT: {
