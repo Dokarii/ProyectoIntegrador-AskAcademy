@@ -20,17 +20,17 @@ const FormResults: React.FC = () => {
       if (formData) {
         setForm(formData);
         
-        // Get form responses
+        // Obtener respuestas del formulario
         const formResponses = getFormResults(id);
         setResponses(formResponses);
         
-        // Calculate average score
+        // Calcular calificacion promedio
         if (formResponses.length > 0) {
           const totalScore = formResponses.reduce((sum, response) => sum + response.score, 0);
           setAverageScore(totalScore / formResponses.length);
         }
         
-        // Calculate statistics per question
+        // Calcular estadísticas por pregunta
         if (formData.questions.length > 0 && formResponses.length > 0) {
           const stats = formData.questions.map((_, qIndex) => {
             const correctCount = formResponses.reduce((count, response) => {
@@ -90,7 +90,7 @@ const FormResults: React.FC = () => {
             </p>
           </div>
           
-          {/* Overview Section */}
+          {/* Sección de Resumen */}
           <section className="mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg shadow-md p-6">
@@ -116,7 +116,7 @@ const FormResults: React.FC = () => {
             </div>
           </section>
           
-          {/* Question Stats Section */}
+          {/* Sección de Estadísticas por Pregunta */}
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-blue-800 mb-4">Estadísticas por Pregunta</h2>
             
@@ -181,7 +181,7 @@ const FormResults: React.FC = () => {
             </div>
           </section>
           
-          {/* Student Responses Section */}
+          {/* Sección de Respuestas de Estudiantes */}
           <section>
             <h2 className="text-2xl font-bold text-blue-800 mb-4">Respuestas de Estudiantes</h2>
             

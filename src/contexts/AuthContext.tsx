@@ -32,10 +32,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<{ id: string; username: string; role: string } | null>(null);
   
   useEffect(() => {
-    // Initialize storage with sample data
+    // inicia el localStorage
     initializeStorage();
     
-    // Check if user is already logged in
+    // verificar si el usuario existe
     const currentUser = getCurrentUser();
     if (currentUser) {
       setUser(currentUser);

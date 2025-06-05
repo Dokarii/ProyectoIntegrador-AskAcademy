@@ -22,7 +22,7 @@ Todo el sistema está optimizado para que la navegación fluya, así como su alm
 ## 📂 Estructura del Proyect
 ```
 📂 src  
- ┣ 📂 components  # Componentes reutilizables  
+ ┣ 📂 components  # Componentes 
  ┣ 📂 pages       # Páginas principales de la aplicación  
  ┣ 📂 styles      # Archivos de estilos CSS  
  ┣ 📜 App.js      # Componente raíz  

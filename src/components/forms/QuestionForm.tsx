@@ -30,7 +30,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialQuestion, onSave, on
     newOptions.splice(index, 1);
     setOptions(newOptions);
     
-    // Reset correctAnswer if the removed option was the correct one
+    // Restablecer correctAnswer si la opción eliminada era la correcta
     if (correctAnswer === index) {
       setCorrectAnswer(0);
     } else if (correctAnswer > index) {
@@ -66,7 +66,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialQuestion, onSave, on
     
     onSave(question);
     
-    // Reset form
+    // Reiniiciar form
     setText('');
     setOptions(['', '', '', '']);
     setCorrectAnswer(0);

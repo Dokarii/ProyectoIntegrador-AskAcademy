@@ -23,10 +23,10 @@ const FormView: React.FC = () => {
       if (formData) {
         setForm(formData);
         
-        // Initialize answers array
+        // Inicializar el arreglo de respuestas
         setAnswers(Array(formData.questions.length).fill(-1));
         
-        // Check if student already submitted the form
+        // Verificar si el estudiante ya envió el formulario
         const existingResponse = getStudentResponseToForm(id, user.id);
         if (existingResponse) {
           setHasSubmitted(true);
@@ -62,11 +62,11 @@ const FormView: React.FC = () => {
   const handleSubmit = () => {
     if (!form || !user) return;
     
-    // Check if all questions are answered
+    // Verificar si todas las preguntas están respondidas
     if (answers.includes(-1)) {
       alert('Por favor responde todas las preguntas antes de enviar');
       
-      // Navigate to the first unanswered question
+      // Navegar a la primera pregunta sin responder
       const firstUnanswered = answers.findIndex(a => a === -1);
       if (firstUnanswered !== -1) {
         setCurrentQuestion(firstUnanswered);
@@ -84,7 +84,7 @@ const FormView: React.FC = () => {
         setScore(response.score);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error al enviar el formulario:', error);
       alert('Error al enviar el formulario. Por favor intenta de nuevo.');
     } finally {
       setIsSubmitting(false);
@@ -142,11 +142,11 @@ const FormView: React.FC = () => {
             )}
           </div>
           
-          {/* Question Card */}
+          {/* Tarjeta de Pregunta */}
           {form.questions.length > 0 && (
             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
               {hasSubmitted ? (
-                // Results view
+                // Vista de Resultados
                 <div className="space-y-8">
                   <h2 className="text-xl font-bold text-blue-800 mb-4">Resultados</h2>
                   
@@ -211,7 +211,7 @@ const FormView: React.FC = () => {
                   ))}
                 </div>
               ) : (
-                // Form view
+                // Vista del Formulario
                 <div>
                   <div className="flex items-start">
                     <div className="mr-3 mt-1">
