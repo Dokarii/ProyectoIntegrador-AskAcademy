@@ -1,4 +1,3 @@
-ProyectoIntegrador-AskAcademy
 # 📚 AskAcademy - Plataforma educativa interactiva
 Se desea Crear una plataforma enfocada en educación con el propósito de darayuda a estudiantes con conceptos vistos en clase
 
