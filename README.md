@@ -34,3 +34,7 @@ Todo el sistema está optimizado para que la navegación fluya, así como su alm
 - **React Router**→ Tratamiento de rutas y navegación fluidad entre secciones.
 - **LocalStorage** → Consolidación de usuarios y formularios sin necesidad de base de datos externa.
 - **CSS** → Diseño limpio  y adaptable para una mejor experiencia.
+
+### *Jordan Sánchez*
+### *Ricardo Tejedor*
+### *Manuela Vargas*
