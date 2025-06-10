@@ -35,6 +35,7 @@ Todo el sistema está optimizado para que la navegación fluya, así como su alm
 - **LocalStorage** → Consolidación de usuarios y formularios sin necesidad de base de datos externa.
 - **CSS** → Diseño limpio  y adaptable para una mejor experiencia.
 
-### *Jordan Sánchez*
-### *Ricardo Tejedor*
-### *Manuela Vargas*
+### **Jordan Sánchez**
+### **Ricardo Tejedor**
+### **Manuela Vargas**
+### **Julián Yepes**
