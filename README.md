@@ -37,12 +37,15 @@ Todo el sistema está optimizado para que la navegación fluya, así como su alm
 
 ### **Jordan Sánchez**
 *1001138057*
+
 *jorsanh210@gmail.com*
 ### **Ricardo Tejedor**
 *1101455195*
+
 *ricardotejedor18@gmail.com*
 ### **Manuela Vargas**
 *1007614867*
+
 *Manuelavargasramirez18@gmail.com*
 
 <!-- ### **Julián Yepes** -->
