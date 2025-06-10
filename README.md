@@ -35,17 +35,16 @@ Todo el sistema está optimizado para que la navegación fluya, así como su alm
 - **LocalStorage** → Consolidación de usuarios y formularios sin necesidad de base de datos externa.
 - **CSS** → Diseño limpio  y adaptable para una mejor experiencia.
 
-### **Jordan Sánchez**
-*1001138057*
-
+## **Jordan Sánchez**
+*1001138057* <br>
 *jorsanh210@gmail.com*
-### **Ricardo Tejedor**
-*1101455195*
 
+## **Ricardo Tejedor**
+*1101455195*<br>
 *ricardotejedor18@gmail.com*
-### **Manuela Vargas**
-*1007614867*
 
-*Manuelavargasramirez18@gmail.com*
+## **Manuela Vargas**
+*1007614867*<br>
+*manuelavargasramirez18@gmail.com*
 
 <!-- ### **Julián Yepes** -->
