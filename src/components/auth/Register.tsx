@@ -1,99 +1,114 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    contrasena: '',
-    telefono: '',
-    tipoUsuario: 'ESTUDIANTE' // Valor por defecto, debe coincidir con tu enum en Spring
+    nombre: "",
+    email: "",
+    contrasena: "",
+    telefono: "",
+    tipoUsuario: "ESTUDIANTE", // Valor por defecto, debe coincidir con tu enum en Spring
   });
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    
+    setError("");
+
     // Validaciones
-    if (!formData.nombre || !formData.email || !formData.contrasena || !formData.telefono) {
-      setError('Por favor completa todos los campos');
+    if (
+      !formData.nombre ||
+      !formData.email ||
+      !formData.contrasena ||
+      !formData.telefono
+    ) {
+      setError("Por favor completa todos los campos");
       return;
     }
-    
+
     if (formData.contrasena !== confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      setError("Las contraseñas no coinciden");
       return;
     }
-    
-    if (!formData.email.includes('@')) {
-      setError('Email inválido');
+
+    if (!formData.email.includes("@")) {
+      setError("Email inválido");
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     try {
-      const response = await fetch('http://localhost:8080/usuarios', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/usuarios", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           nombre: formData.nombre,
           email: formData.email,
-          contrasena: formData.contrasena, // El backend debería encriptarla
+          contrasena: formData.contrasena,
           telefono: formData.telefono,
-          tipoUsuario: formData.tipoUsuario
+          tipoUsuario: formData.tipoUsuario,
         }),
       });
-      
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Error al registrar usuario');
+        const errorText = await response.text();
+        throw new Error(errorText || "Error al registrar usuario");
       }
-      
-      const userData = await response.json();
-      
+
+      const data = await response.json();
+
       if (register) {
-        register(userData.email, userData.password, userData.tipoUsuario);
+        register(data.email, formData.contrasena, data.tipoUsuario);
       }
-      
-      navigate('/dashboard');
+
+      navigate("/dashboard");
     } catch (e: any) {
-      setError(e.message || 'Error al registrar usuario');
-      console.error('Registration error:', e);
+      setError(e.message || "Error al registrar usuario");
+      console.error("Registration error:", e);
     } finally {
       setIsLoading(false);
     }
   };
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
-  
+
   return (
     <div className="w-full max-w-md mx-auto p-6">
-      <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">Crear Cuenta</h2>
-      
+      <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">
+        Crear Cuenta
+      </h2>
+
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           {error}
         </div>
       )}
-      
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6">
+
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white rounded-lg shadow-lg p-6"
+      >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nombre">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="nombre"
+          >
             Nombre Completo
           </label>
           <input
@@ -106,9 +121,12 @@ const Register: React.FC = () => {
             placeholder="Tu nombre completo"
           />
         </div>
-        
+
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -121,9 +139,12 @@ const Register: React.FC = () => {
             placeholder="tu@email.com"
           />
         </div>
-        
+
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="contrasena">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="contrasena"
+          >
             Contraseña
           </label>
           <input
@@ -136,9 +157,12 @@ const Register: React.FC = () => {
             placeholder="Crea una contraseña segura"
           />
         </div>
-        
+
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="confirmPassword"
+          >
             Confirmar Contraseña
           </label>
           <input
@@ -150,9 +174,12 @@ const Register: React.FC = () => {
             placeholder="Repite tu contraseña"
           />
         </div>
-        
+
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telefono">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="telefono"
+          >
             Teléfono
           </label>
           <input
@@ -165,7 +192,7 @@ const Register: React.FC = () => {
             placeholder="+1234567890"
           />
         </div>
-        
+
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Tipo de Usuario
@@ -177,7 +204,7 @@ const Register: React.FC = () => {
                 className="form-radio h-5 w-5 text-blue-600"
                 name="tipoUsuario"
                 value="ESTUDIANTE"
-                checked={formData.tipoUsuario === 'ESTUDIANTE'}
+                checked={formData.tipoUsuario === "ESTUDIANTE"}
                 onChange={handleChange}
               />
               <span className="ml-2 text-gray-700">Estudiante</span>
@@ -188,29 +215,29 @@ const Register: React.FC = () => {
                 className="form-radio h-5 w-5 text-blue-600"
                 name="tipoUsuario"
                 value="DOCENTE"
-                checked={formData.tipoUsuario === 'DOCENTE'}
+                checked={formData.tipoUsuario === "DOCENTE"}
                 onChange={handleChange}
               />
-              <span className="ml-2 text-gray-700">Profesor</span>
+              <span className="ml-2 text-gray-700">Docente</span>
             </label>
           </div>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <button
             type="submit"
             disabled={isLoading}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out transform hover:scale-105 disabled:opacity-70"
           >
-            {isLoading ? 'Registrando...' : 'Registrarse'}
+            {isLoading ? "Registrando..." : "Registrarse"}
           </button>
         </div>
       </form>
-      
+
       <p className="mt-4 text-center text-gray-600">
-        ¿Ya tienes una cuenta?{' '}
-        <button 
-          onClick={() => navigate('/login')}
+        ¿Ya tienes una cuenta?{" "}
+        <button
+          onClick={() => navigate("/login")}
           className="text-blue-600 hover:text-blue-800 font-medium"
         >
           Inicia sesión aquí

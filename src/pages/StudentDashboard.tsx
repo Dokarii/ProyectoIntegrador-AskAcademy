@@ -12,8 +12,6 @@ const StudentDashboard: React.FC = () => {
   const [forms, setForms] = useState<Form[]>([]);
   
   useEffect(() => {
-    // For demo purposes, we're showing all forms from the teacher
-    // In a real app, you'd filter by assigned subjects/classes
     const availableForms = getFormsByTeacher('teacher1');
     setForms(availableForms);
   }, [user]);
@@ -29,7 +27,6 @@ const StudentDashboard: React.FC = () => {
             <p className="text-gray-600 mt-1">Accede a tus materias y responde los formularios asignados.</p>
           </div>
           
-          {/* Subjects Section */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-blue-800 mb-4">Mis Materias</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -39,7 +36,6 @@ const StudentDashboard: React.FC = () => {
             </div>
           </section>
           
-          {/* Available Forms Section */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-blue-800 mb-4">Formularios Disponibles</h2>
             
@@ -56,7 +52,6 @@ const StudentDashboard: React.FC = () => {
             )}
           </section>
           
-          {/* Recent Activity Section */}
           <section>
             <h2 className="text-2xl font-bold text-blue-800 mb-4">Actividad Reciente</h2>
             <div className="bg-white rounded-lg shadow-md p-6">

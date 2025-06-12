@@ -32,10 +32,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<{ id: string; username: string; role: string } | null>(null);
   
   useEffect(() => {
-    // inicia el localStorage
     initializeStorage();
     
-    // verificar si el usuario existe
     const currentUser = getCurrentUser();
     if (currentUser) {
       setUser(currentUser);
@@ -44,7 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   
   const handleLogin = async (username: string, password: string): Promise<boolean> => {
     try {
-      const token = login(username, password);
+      const token = await login(username, password);
       if (token) {
         const user = getCurrentUser();
         setUser(user);
@@ -59,7 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   
   const handleRegister = async (username: string, password: string, role: 'teacher' | 'student'): Promise<boolean> => {
     try {
-      const token = register(username, password, role);
+      const token = await register(username, password, role);
       if (token) {
         const user = getCurrentUser();
         setUser(user);
